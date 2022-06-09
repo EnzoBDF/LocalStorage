@@ -23,12 +23,17 @@ const list = () => {
     }else{
         tarefas.push(["Sem dados","Sem dados"])
     }
-    tarefas.forEach(element =>{
-        tbody.innerHTML += "<tr></tr>" + element[0]+"</td><td>"+element[1]+"</td><tr>"
+    tarefas.forEach((element,index) =>{
+        tbody.innerHTML += "<tr><td>" + element[0]+"</td><td>"+element[1]+"</td>"
+        +"<td><button onclick='deletar("+ index +")'>🍆💦🍑 </button> </td> </tr>"
 
     });
+}  
 
-
-
+const deletar = (index) =>  { 
+    newArray  = tarefas.filter(
+        (e, i)=> i  != index
+    )  
+    localStorage.setItem('tarefas', JSON.stringify(newArray))
+    document.location.reload(true)
 }
-
